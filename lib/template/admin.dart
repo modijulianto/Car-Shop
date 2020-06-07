@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 // import './detailproduk.dart';
 // import './beranda.dart' as beranda;
-import './listmerk.dart' as listmerk;
-import 'ui/home.dart' as crud;
+import 'package:carshop/listMerk.dart' as listmerk;
+import 'package:carshop/ui/home.dart' as crud;
 import 'package:carshop/ui/beranda.dart' as user;
 
 class Admin extends StatefulWidget {

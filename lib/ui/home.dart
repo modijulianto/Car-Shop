@@ -82,15 +82,4 @@ class ItemList extends StatelessWidget {
       },
     );
   }
-
-  // Future <http.Response> deletePenjualan(id) async {
-  //   final http.Response response=await http.delete("http://192.168.43.58/apicarshop/penjualan/delete/$id");
-  //   Future<List> ItemList=getData();
-  //   ItemList.then((ItemList){
-  //     setState((){
-  //       this.
-  //     })
-  //   })
-
-  // }
 }

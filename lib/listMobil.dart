@@ -1,86 +1,86 @@
 import 'package:flutter/material.dart';
-import './detailproduk.dart';
+import './detailProduk.dart';
 
 
 // ================================= LIST MERK =================================
-class ListMerk extends StatefulWidget {
-  @override
-  _ListMerkState createState() => _ListMerkState();
-}
+// class ListMerk extends StatefulWidget {
+//   @override
+//   _ListMerkState createState() => _ListMerkState();
+// }
 
-class _ListMerkState extends State<ListMerk> {
+// class _ListMerkState extends State<ListMerk> {
 
-  List<Container> daftarmerkmobil = new List();
+//   List<Container> daftarmerkmobil = new List();
 
-  var merk=[
-    {"merk":"MERCEDES BENZ",  "logo":"Mercedes-Benz.png"},
-    {"merk":"BMW",            "logo":"BMW.jpg"},
-    {"merk":"AUDI",           "logo":"Audi.png"},
-    {"merk":"HONDA",          "logo":"Honda.jpg"},
-    {"merk":"TOYOTA",         "logo":"Toyota.jpg"},
-    {"merk":"MAZDA",          "logo":"Mazda.jpg"},
-    {"merk":"FORD",           "logo":"Ford.png"},
-    {"merk":"NISSAN",         "logo":"Nissan.jpg"},
-    {"merk":"MITSUBISHI",     "logo":"Mitsubishi.png"},
-    {"merk":"SUZUKI",         "logo":"Suzuki.png"},
-    {"merk":"WULING",         "logo":"Wuling.png"}
-  ];
+//   var merk=[
+//     {"merk":"MERCEDES BENZ",  "logo":"Mercedes-Benz.png"},
+//     {"merk":"BMW",            "logo":"BMW.jpg"},
+//     {"merk":"AUDI",           "logo":"Audi.png"},
+//     {"merk":"HONDA",          "logo":"Honda.jpg"},
+//     {"merk":"TOYOTA",         "logo":"Toyota.jpg"},
+//     {"merk":"MAZDA",          "logo":"Mazda.jpg"},
+//     {"merk":"FORD",           "logo":"Ford.png"},
+//     {"merk":"NISSAN",         "logo":"Nissan.jpg"},
+//     {"merk":"MITSUBISHI",     "logo":"Mitsubishi.png"},
+//     {"merk":"SUZUKI",         "logo":"Suzuki.png"},
+//     {"merk":"WULING",         "logo":"Wuling.png"}
+//   ];
 
-  _buatlist()async{
-    for (var i = 0; i < merk.length; i++) {
-      final merkmobil = merk[i];
-      final String logo = merkmobil["logo"];
+//   _buatlist()async{
+//     for (var i = 0; i < merk.length; i++) {
+//       final merkmobil = merk[i];
+//       final String logo = merkmobil["logo"];
 
-      daftarmerkmobil.add(
-        new Container(
-          padding: new EdgeInsets.all(10.0),
-          child: new Card(
-            child: new Column(
-              children: <Widget>[
-                new Hero(
-                  tag: merkmobil["merk"],
-                  child: new Material(
-                    child: new InkWell(
-                      onTap: ()=> Navigator.of(context).push(new MaterialPageRoute(
-                        builder: (BuildContext context)=> new ListProduk(merk: merkmobil["merk"], logo: logo,),
-                      )),
-                      child: new Image.asset("assets/logo/$logo", fit: BoxFit.fitWidth,),
-                    ),
-                  ),
-                ),
+//       daftarmerkmobil.add(
+//         new Container(
+//           padding: new EdgeInsets.all(10.0),
+//           child: new Card(
+//             child: new Column(
+//               children: <Widget>[
+//                 new Hero(
+//                   tag: merkmobil["merk"],
+//                   child: new Material(
+//                     child: new InkWell(
+//                       onTap: ()=> Navigator.of(context).push(new MaterialPageRoute(
+//                         builder: (BuildContext context)=> new ListProduk(merk: merkmobil["merk"], logo: logo,),
+//                       )),
+//                       child: new Image.asset("assets/logo/$logo", fit: BoxFit.fitWidth,),
+//                     ),
+//                   ),
+//                 ),
 
                 
-                new Text(merkmobil["merk"], style: new TextStyle(fontSize: 15.0),)
-              ],
-            )
-          )
-        )
-      );
-    }
-  }
+//                 new Text(merkmobil["merk"], style: new TextStyle(fontSize: 15.0),)
+//               ],
+//             )
+//           )
+//         )
+//       );
+//     }
+//   }
 
-  @override
-  void initState() {
-    _buatlist();
-    super.initState();
-  }
+//   @override
+//   void initState() {
+//     _buatlist();
+//     super.initState();
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("LIST MERK")
-      ),
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text("LIST MERK")
+//       ),
 
-      resizeToAvoidBottomPadding: false,
-      body: new GridView.count(
-        crossAxisCount: 2,
-        children: daftarmerkmobil,
+//       resizeToAvoidBottomPadding: false,
+//       body: new GridView.count(
+//         crossAxisCount: 2,
+//         children: daftarmerkmobil,
 
-      ),
-    );
-  }
-}
+//       ),
+//     );
+//   }
+// }
 // ================================= END LIST MERK =================================
 
 

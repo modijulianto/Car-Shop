@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import './listmerk.dart' as listmerk;
+// import 'package:carshop/listmerk.dart' as listmerk;
+import 'package:carshop/listMerk.dart' as listmerk;
 import 'package:carshop/ui/beranda.dart' as user;
-import 'package:carshop/admin.dart';
+import 'package:carshop/template/admin.dart';
 import 'package:carshop/ui/login.dart';
 
 class Member extends StatefulWidget {

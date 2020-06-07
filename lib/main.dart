@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:carshop/member.dart';
+import 'package:carshop/template/member.dart';
 
 void main() => runApp(
   new MaterialApp(
