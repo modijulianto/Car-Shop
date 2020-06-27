@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import './detailproduk.dart';
 // import './beranda.dart' as beranda;
 import 'package:carshop/listMerk.dart' as listmerk;
-import 'package:carshop/ui/home.dart' as crud;
+import 'package:carshop/CRUD/template.dart' as crud;
 import 'package:carshop/ui/beranda.dart' as user;
 
 class Admin extends StatefulWidget {
@@ -33,7 +33,7 @@ class _AdminState extends State<Admin> with SingleTickerProviderStateMixin {
         children: <Widget>[
           new user.BerandaUser(),
           new listmerk.ListMerk(),
-          new crud.Home(),
+          new crud.TemplateCrud(),
         ],
       ),
 
