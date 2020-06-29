@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import './home.dart';
-import './add_newCar.dart';
+// import './add_newCar.dart';
 
 class AddNewCar extends StatefulWidget {
   @override

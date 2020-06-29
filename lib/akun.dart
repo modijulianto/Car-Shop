@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/material.dart';
 
 class Akun extends StatefulWidget {
   @override
@@ -9,10 +9,12 @@ class Akun extends StatefulWidget {
 
 class _AkunState extends State<Akun> {
   String id, nama, email, photo;
+  int level=0;
 
   getPref() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
+      level = preferences.getInt("level");
       id = preferences.getString("id");
       nama = preferences.getString("nama");
       email = preferences.getString("email");

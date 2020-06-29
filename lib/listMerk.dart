@@ -62,7 +62,7 @@ class ItemList extends StatelessWidget {
                         child: new InkWell(
                           onTap: () => Navigator.of(context).push(new MaterialPageRoute(
                             builder: (BuildContext context) => new ListProduk(
-                              idmerk: list[i]["id_merk"].toString(),
+                              idmerk: list[i]["id_merk"],
                               merk: list[i]["merk"],
                               logo: list[i]["logo"],
                             ),
@@ -104,16 +104,18 @@ class ListProduk extends StatelessWidget {
         new Container(
           height: 630.0,
           child: new Hero(
-              tag: merk,
-              child: new Material(
-                  child: new InkWell(
-                // child: new Image.asset("assets/logo/$logo"),
+            tag: merk,
+            child: new Material(
+              child: new InkWell(
+              // child: new Image.asset("assets/logo/$logo"),
                 child: new ListMobil(
                   merk: merk,
                   logo: logo,
-                  idmerk: idmerk.toString(),
+                  idmerk: idmerk,
                 ),
-              ))),
+              )
+            )
+          ),
         ),
 
         // new ListCar(merk: merk, logo: logo,),
@@ -135,7 +137,7 @@ class ListMobil extends StatefulWidget {
 class _ListMobilState extends State<ListMobil> {
   Future<List> getData() async {
     final response =
-        await http.get("http://192.168.43.58/apicarshop/Carshop/getProduk");
+    await http.get("http://192.168.43.58/apicarshop/Carshop/getProduk");
     return json.decode(response.body);
   }
 
@@ -144,21 +146,22 @@ class _ListMobilState extends State<ListMobil> {
     return new Scaffold(
       appBar: new AppBar(title: new Text("List Mobil")),
       body: new FutureBuilder<List>(
-          future: getData(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) print(snapshot.error);
+        future: getData(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) print(snapshot.error);
 
-            return snapshot.hasData
-                ? new ListCar(
-                    list: snapshot.data,
-                    merk: widget.merk,
-                    logo: widget.logo,
-                    idmerk: widget.idmerk.toString(),
-                  )
-                : new Center(
-                    child: new CircularProgressIndicator(),
-                  );
-          }),
+          return snapshot.hasData
+              ? new ListCar(
+                list: snapshot.data,
+                merk: widget.merk,
+                logo: widget.logo,
+                idmerk: widget.idmerk,
+              )
+              : new Center(
+                child: new CircularProgressIndicator(),
+              );
+        }
+      ),
     );
   }
 }
@@ -181,7 +184,7 @@ class _ListCarState extends State<ListCar> {
     return new ListView.builder(
         itemCount: widget.list == null ? 0 : widget.list.length,
         itemBuilder: (context, i) {
-          if (widget.list[i]['id_merk'] == widget.idmerk.toString()) {
+          if (widget.list[i]['id_merk'] == "${widget.idmerk.toString()}") {
             return new Container(
               padding: const EdgeInsets.all(3.0),
               child: new ListView(

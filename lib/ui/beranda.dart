@@ -1,4 +1,3 @@
-// import 'package:carshop/ui/berandaAdmin.dart';
 import 'package:carshop/ui/login.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -38,11 +37,11 @@ class _BerandaUserState extends State<BerandaUser> {
   }
 
   static final List<String> imgSlider = [
-    'Audi R8.jpg',
-    'BMW M5.jpg',
-    'Honda Civic Type R.jpg',
-    'Mercedes Benz CLS-Class.jpg',
-    'Toyota GR Supra.jpg',
+    'Audi_R8.jpg',
+    'BMW_M5.jpg',
+    'Honda_Civic_Type_R.jpg',
+    'Mercedes_Benz_CLS-Class.jpg',
+    'Toyota_GR_Supra.jpg',
     'beranda.jpg'
   ];
 
@@ -80,14 +79,16 @@ class _BerandaUserState extends State<BerandaUser> {
       appBar: new AppBar(
         backgroundColor: Colors.blue,
         title:
-        Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-          Text(
-            "CARSHOP", 
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
+        Row(mainAxisAlignment: MainAxisAlignment.center, 
+          children: <Widget>[
+            Text(
+              "CARSHOP", 
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-        ]),
+          ]
+        ),
 
         actions: <Widget>[
           IconButton(

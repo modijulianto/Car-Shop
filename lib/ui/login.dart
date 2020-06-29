@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:async';
+import 'package:carshop/ui/register.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -116,19 +117,43 @@ class _LoginState extends State<Login> {
                           padding: EdgeInsets.only(top: 20),
                         ),
 
-                        new RaisedButton(
-                          child: new Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              // new Icon(Icons.verified_user),
-                              new Text("LOGIN")
-                            ],
-                          ),
-                          color: Colors.blue,
-                          splashColor: Colors.blueGrey,
-                          onPressed: () {
-                            _login();
-                          },
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            new RaisedButton(
+                              child: new Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  // new Icon(Icons.verified_user),
+                                  new Text("LOGIN")
+                                ],
+                              ),
+                              color: Colors.blue,
+                              splashColor: Colors.blueGrey,
+                              onPressed: () {
+                                _login();
+                              },
+                            ),
+                            
+                            Padding(padding: EdgeInsets.all(10.0)),
+
+                            new RaisedButton(
+                              child: new Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  // new Icon(Icons.verified_user),
+                                  new Text("REGISTER")
+                                ],
+                              ),
+                              color: Colors.lightBlue,
+                              splashColor: Colors.blueGrey,
+                              onPressed: (){
+                                Navigator.of(context).push(new MaterialPageRoute(
+                                builder: (BuildContext context) => Register(),
+                              ));
+                            },
+                            ),
+                          ],
                         ),
                         
                         new Padding(
@@ -138,7 +163,7 @@ class _LoginState extends State<Login> {
                         Text(
                           msg,
                           style: new TextStyle(fontSize: 20.0,color: Colors.red),
-                        )
+                        ),
                       ],
                     ),
                   )
