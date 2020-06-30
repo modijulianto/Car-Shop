@@ -17,6 +17,10 @@ class _AddNewCarState extends State<AddNewCar> {
   TextEditingController controllerKondisi = new TextEditingController();
   TextEditingController controllerHarga = new TextEditingController();
   TextEditingController controllerBintang = new TextEditingController();
+  TextEditingController controllerLokasi = new TextEditingController();
+  TextEditingController controllerTransmisi = new TextEditingController();
+  TextEditingController controllerWarna = new TextEditingController();
+  TextEditingController controllerTahun = new TextEditingController();
 
   void addData(){
     var url="http://192.168.43.58/apicarshop/Carshop/saveCar";
@@ -25,7 +29,11 @@ class _AddNewCarState extends State<AddNewCar> {
       "id_merk": controllerIdMerk.text,
       "nama_mobil": controllerNama.text,
       "deskripsi": controllerDeskripsi.text,
+      "lokasi": controllerLokasi.text,
       "kondisi": controllerKondisi.text,
+      "transmisi": controllerTransmisi.text,
+      "warna": controllerWarna.text,
+      "tahun": controllerTahun.text,
       "harga": controllerHarga.text,
       "bintang": controllerBintang.text,
     });
@@ -66,6 +74,13 @@ class _AddNewCarState extends State<AddNewCar> {
                   )
                 ),
                 new TextField(
+                  controller: controllerHarga,
+                  decoration: new InputDecoration(
+                    hintText: "Harga",
+                    labelText: "Harga"
+                  )
+                ),
+                new TextField(
                   controller: controllerKondisi,
                   decoration: new InputDecoration(
                     hintText: "Kondisi",
@@ -73,10 +88,31 @@ class _AddNewCarState extends State<AddNewCar> {
                   )
                 ),
                 new TextField(
-                  controller: controllerHarga,
+                  controller: controllerLokasi,
                   decoration: new InputDecoration(
-                    hintText: "Harga",
-                    labelText: "Harga"
+                    hintText: "Lokasi",
+                    labelText: "Lokasi Mobil"
+                  )
+                ),
+                new TextField(
+                  controller: controllerTransmisi,
+                  decoration: new InputDecoration(
+                    hintText: "Transmisi",
+                    labelText: "Transmisi Mobil"
+                  )
+                ),
+                new TextField(
+                  controller: controllerWarna,
+                  decoration: new InputDecoration(
+                    hintText: "Warna",
+                    labelText: "Warna Mobil"
+                  )
+                ),
+                new TextField(
+                  controller: controllerTahun,
+                  decoration: new InputDecoration(
+                    hintText: "Tahun",
+                    labelText: "Tahun Mobil"
                   )
                 ),
                 new TextField(

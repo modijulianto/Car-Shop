@@ -149,9 +149,9 @@ class _LoginState extends State<Login> {
                               splashColor: Colors.blueGrey,
                               onPressed: (){
                                 Navigator.of(context).push(new MaterialPageRoute(
-                                builder: (BuildContext context) => Register(),
-                              ));
-                            },
+                                  builder: (BuildContext context) => Register(),
+                                ));
+                              },
                             ),
                           ],
                         ),

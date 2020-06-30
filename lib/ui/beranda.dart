@@ -1,8 +1,10 @@
 import 'package:carshop/ui/login.dart';
+import 'package:carshop/wishList.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:carshop/akun.dart';
+import 'package:carshop/wishList.dart';
 
 
 class BerandaUser extends StatefulWidget {
@@ -137,9 +139,17 @@ class _BerandaUserState extends State<BerandaUser> {
               trailing: new Icon(Icons.notifications_none),
             ),
 
-            new ListTile(
-              title: new Text('Wishlist'),
-              trailing: new Icon(Icons.bookmark_border),
+            new GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => WishList(),
+                ));
+              },
+
+              child: new ListTile(
+                title: new Text('Wishlist'),
+              trailing: new Icon(Icons.bookmark),
+              )
             ),
             
             new GestureDetector(

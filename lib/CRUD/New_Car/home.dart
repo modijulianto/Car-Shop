@@ -72,7 +72,7 @@ class ItemList extends StatelessWidget {
             child: new Card(
               child: new ListTile(
                 title: new Text("${list[i]['nama_mobil']}"),
-                leading: new Icon(Icons.widgets),
+                leading: new Icon(Icons.directions_car),
                 subtitle: new Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[

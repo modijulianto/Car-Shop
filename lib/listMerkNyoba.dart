@@ -95,28 +95,12 @@ class ListProduk extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        body: new ListView(
-      children: <Widget>[
-        new Container(
-          height: 630.0,
-          child: new Hero(
-            tag: merk,
-            child: new Material(
-              child: new InkWell(
-              // child: new Image.asset("assets/logo/$logo"),
-                child: new ListMobil(
-                  merk: merk,
-                  logo: logo,
-                  idmerk: idmerk,
-                ),
-              )
-            )
-          ),
-        ),
-
-        // new ListCar(merk: merk, logo: logo,),
-      ],
-    ));
+      body: new ListMobil(
+        merk: merk,
+        logo: logo,
+        idmerk: idmerk,
+      ),
+    );
   }
 }
 
@@ -140,26 +124,45 @@ class _ListMobilState extends State<ListMobil> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(title: new Text("${widget.merk}")),
-      body: new FutureBuilder<List>(
-        future: getData(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) print(snapshot.error);
+      body: new ListView(
+        children: <Widget>[
+          new Container(
+            height: 670.0,
+            child: new Hero(
+              tag: widget.merk, 
+              child: new Material(
+                child: new InkWell(
+                  // child: new Image.asset("assets/logo/$logo"),
+                  child: FutureBuilder<List>(
+                    future: getData(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) print(snapshot.error);
 
-          return snapshot.hasData
-              ? new ListCar(
-                listMbl: snapshot.data,
-                merk: widget.merk,
-                logo: widget.logo,
-                idmerk: "${widget.idmerk}",
+                      return snapshot.hasData
+                          ? new ListCar(
+                            listMbl: snapshot.data,
+                            merk: widget.merk,
+                            logo: widget.logo,
+                            idmerk: "${widget.idmerk}",
+                          )
+                          : new Center(
+                            child: new CircularProgressIndicator(),
+                          );
+                    }
+                  ),
+                )
               )
-              : new Center(
-                child: new CircularProgressIndicator(),
-              );
-        }
-      ),
+            ),
+          ),
+          
+          // new ListCar(merk: merk, logo: logo,),
+        ],
+      )
     );
   }
 }
+
+
 
 class ListCar extends StatefulWidget {
   ListCar({this.merk, this.logo, this.idmerk, this.listMbl});
@@ -179,10 +182,9 @@ class _ListCarState extends State<ListCar> {
     return new ListView.builder(
       itemCount: widget.listMbl == null ? 0 : widget.listMbl.length,
       itemBuilder: (context, i) {
-        // for (var j = 1; j <= widget.listMbl.length; j++) {
+        // for (var j = 0; j < widget.listMbl.length; j++) {
           if (widget.listMbl[i]['id_merk'] == "${widget.idmerk}") {
             return new Container(
-              padding: const EdgeInsets.all(3.0),
               child: new ListView(
                 shrinkWrap: true,
                 padding: const EdgeInsets.fromLTRB(2.0, 10.0, 2.0, 10.0),
@@ -191,10 +193,16 @@ class _ListCarState extends State<ListCar> {
                     onTap: () {
                       Navigator.of(context).push(new MaterialPageRoute(
                         builder: (BuildContext context) => DetailProduk(
+                          idmobil: widget.listMbl[i]['id_mobil'],
                           name: widget.listMbl[i]['nama_mobil'],
                           description: "${widget.listMbl[i]['deskripsi']}",
                           merknya: "${widget.listMbl[i]['merk']}",
                           price: "${widget.listMbl[i]['harga']}",
+                          kondisi: "${widget.listMbl[i]['kondisi']}",
+                          transmisi: "${widget.listMbl[i]['transmisi']}",
+                          lokasi: "${widget.listMbl[i]['lokasi']}",
+                          warna: "${widget.listMbl[i]['warna']}",
+                          tahun: "${widget.listMbl[i]['tahun']}",
                           image: widget.listMbl[i]['foto'],
                           star: 5,
                         )
@@ -203,7 +211,7 @@ class _ListCarState extends State<ListCar> {
                     child: ProductBox(
                       name: "${widget.listMbl[i]['nama_mobil']}",
                       description: "${widget.listMbl[i]['deskripsi']}",
-                      merknya: "${widget.merk}",
+                      merknya: "${widget.listMbl[i]['merk']}",
                       price: "${widget.listMbl[i]['harga']}",
                       image: "${widget.listMbl[i]['foto']}",
                       star: 5,
@@ -218,58 +226,6 @@ class _ListCarState extends State<ListCar> {
     );
   }
 }
-
-// class ItemList2 extends StatelessWidget {
-
-//   ItemList2({this.list,this.merk,this.logo,this.idmerk});
-//   final List list;
-//   final String merk;
-//   final String logo;
-//   final String idmerk;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return new ListView.builder(
-//       itemCount: list==null ? 0 : list.length,
-//       itemBuilder: (context, i){
-//         if(list[i]['id_merk'] == this.idmerk){
-//           return new Container(
-//             padding: const EdgeInsets.all(3.0),
-//             child: new ListView(
-//               shrinkWrap: true,
-//               padding: const EdgeInsets.fromLTRB(2.0, 10.0, 2.0, 10.0),
-//               children: <Widget>[
-//                 new GestureDetector(
-//                   onTap: () {
-//                     Navigator.of(context).push(new MaterialPageRoute(
-//                       builder: (BuildContext context) => DetailProduk(
-//                         name: list[i]['nama_mobil'],
-//                         description: "${list[i]['deskripsi']}",
-//                         merknya: "${list[i]['merk']}",
-//                         price: "${list[i]['harga']}",
-//                         image: list[i]['foto'],
-//                         star: list[i]['bintang'],
-//                       )
-//                     ));
-//                   },
-
-//                   child: ProductBox(
-//                     name: list[i]['nama_mobil'],
-//                     description: "${list[i]['deskripsi']}",
-//                     merknya: "${list[i]['merk']}",
-//                     price: "${list[i]['harga']}",
-//                     image: list[i]['foto'],
-//                     star: list[i]['bintang'],
-//                   ),
-//                 )
-//               ],
-//             ),
-//           );
-//         }
-//       },
-//     );
-//   }
-// }
 
 class ProductBox extends StatelessWidget {
   ProductBox({
@@ -315,7 +271,7 @@ class ProductBox extends StatelessWidget {
                   Text(this.description),
                   Text(
                     "Price: " + this.price.toString(),
-                    style: TextStyle(color: Colors.yellow),
+                    style: TextStyle(color: Colors.yellow[700]),
                   ),
                   Row(
                     children: <Widget>[

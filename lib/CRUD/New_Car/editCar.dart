@@ -23,6 +23,10 @@ class _EditCarState extends State<EditCar> {
   TextEditingController controllerKondisi;
   TextEditingController controllerHarga;
   TextEditingController controllerBintang;
+  TextEditingController controllerLokasi;
+  TextEditingController controllerTransmisi;
+  TextEditingController controllerWarna;
+  TextEditingController controllerTahun;
 
   void editData(){
     var url="http://192.168.43.58/apicarshop/Carshop/save_updateCar";
@@ -31,7 +35,11 @@ class _EditCarState extends State<EditCar> {
       "id_merk": controllerIdMerk.text,
       "nama_mobil": controllerNama.text,
       "deskripsi": controllerDeskripsi.text,
+      "lokasi": controllerLokasi.text,
       "kondisi": controllerKondisi.text,
+      "transmisi": controllerTransmisi.text,
+      "warna": controllerWarna.text,
+      "tahun": controllerTahun.text,
       "harga": controllerHarga.text,
       "bintang": controllerBintang.text,
     });
@@ -45,6 +53,10 @@ class _EditCarState extends State<EditCar> {
     controllerKondisi= new TextEditingController(text: widget.list[widget.index]['kondisi']);
     controllerHarga= new TextEditingController(text: widget.list[widget.index]['harga']);
     controllerBintang= new TextEditingController(text: widget.list[widget.index]['bintang']);
+    controllerTahun= new TextEditingController(text: widget.list[widget.index]['tahun']);
+    controllerWarna= new TextEditingController(text: widget.list[widget.index]['warna']);
+    controllerTransmisi= new TextEditingController(text: widget.list[widget.index]['transmisi']);
+    controllerLokasi= new TextEditingController(text: widget.list[widget.index]['lokasi']);
     super.initState();
   }
 
@@ -80,6 +92,13 @@ class _EditCarState extends State<EditCar> {
                   )
                 ),
                 new TextField(
+                  controller: controllerHarga,
+                  decoration: new InputDecoration(
+                    hintText: "Harga",
+                    labelText: "Harga"
+                  )
+                ),
+                new TextField(
                   controller: controllerKondisi,
                   decoration: new InputDecoration(
                     hintText: "Kondisi",
@@ -87,10 +106,31 @@ class _EditCarState extends State<EditCar> {
                   )
                 ),
                 new TextField(
-                  controller: controllerHarga,
+                  controller: controllerLokasi,
                   decoration: new InputDecoration(
-                    hintText: "Harga",
-                    labelText: "Harga"
+                    hintText: "Lokasi",
+                    labelText: "Lokasi Mobil"
+                  )
+                ),
+                new TextField(
+                  controller: controllerTransmisi,
+                  decoration: new InputDecoration(
+                    hintText: "Transmisi",
+                    labelText: "Transmisi Mobil"
+                  )
+                ),
+                new TextField(
+                  controller: controllerWarna,
+                  decoration: new InputDecoration(
+                    hintText: "Warna",
+                    labelText: "Warna Mobil"
+                  )
+                ),
+                new TextField(
+                  controller: controllerTahun,
+                  decoration: new InputDecoration(
+                    hintText: "Tahun",
+                    labelText: "Tahun Mobil"
                   )
                 ),
                 new TextField(

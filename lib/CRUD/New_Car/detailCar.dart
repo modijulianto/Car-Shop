@@ -13,14 +13,6 @@ class DetailCar extends StatefulWidget {
 }
 
 class _DetailCarState extends State<DetailCar> {
-
-  // void deleteData(id){
-  //   var url="http://192.168.43.58/apicarshop/penjualan/delete";
-  //   http.post(url, body:{
-  //     'id': widget.list[widget.index]['id']
-  //   });
-  // }
-
   void confirm (id){
     AlertDialog alertDialog = new AlertDialog(
       content: new Text("Are you sure want to delete '${widget.list[widget.index]['nama_mobil']}' with '${widget.list[widget.index]['merk']}'"),
@@ -53,7 +45,7 @@ class _DetailCarState extends State<DetailCar> {
     return new Scaffold(
       appBar: new AppBar(title: new Text("${widget.list[widget.index]['nama_mobil']}"),),
       body: new Container(
-        height: 300.0,
+        height: 400.0,
         padding: const EdgeInsets.all(20.0),
         child: new Card(
           child: new Center(
@@ -65,6 +57,10 @@ class _DetailCarState extends State<DetailCar> {
                 new Text("${widget.list[widget.index]['deskripsi']}", style: new TextStyle(fontSize: 18.0),),
                 new Text("Harga : ${widget.list[widget.index]['harga']}", style: new TextStyle(fontSize: 18.0),),
                 new Text("Kondisi : ${widget.list[widget.index]['kondisi']}", style: new TextStyle(fontSize: 18.0),),
+                new Text("Lokasi : ${widget.list[widget.index]['lokasi']}", style: new TextStyle(fontSize: 18.0),),
+                new Text("Transmisi : ${widget.list[widget.index]['transmisi']}", style: new TextStyle(fontSize: 18.0),),
+                new Text("Warna : ${widget.list[widget.index]['warna']}", style: new TextStyle(fontSize: 18.0),),
+                new Text("Tahun : ${widget.list[widget.index]['tahun']}", style: new TextStyle(fontSize: 18.0),),
                 new Text("Bintang : ${widget.list[widget.index]['bintang']}", style: new TextStyle(fontSize: 18.0),),
                 new Padding(padding: const EdgeInsets.only(top: 30.0),),
 
